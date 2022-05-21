@@ -1,5 +1,5 @@
 import react from "react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Button, Row, Col, Input, Select, Tabs } from "antd";
 import "./Currency.scss";
 import check from './assets/image.svg'
@@ -64,14 +64,12 @@ function Currency({onChange, readOnly, value, visible, onClose}) {
                 if (searchTerm == "") {
                   return item
                 }
-                else if (item.value.toLowerCase().includes(searchTerm) )
+                else if (item.value.toLowerCase().includes(searchTerm) || item.value.includes(searchTerm))
                 {
                   return item
                 }
               })              
               .map((item, index) => {
-                // console.log(item.className);
-                // console.log('re render');
                 return (
                   <Col
                     xl={12}
@@ -80,7 +78,6 @@ function Currency({onChange, readOnly, value, visible, onClose}) {
                     md={24}
                     sm={24}
                     xs={24}
-                    className=""
                     key={item.id}
                   >
                     <div
@@ -95,7 +92,7 @@ function Currency({onChange, readOnly, value, visible, onClose}) {
                         <Col className="d-flex align-items-center" span={4}>
                           <img id={item.id} src={item.flag} alt=""></img>
                         </Col>
-                        <Col className="d-flex flex-column " span={16}>
+                        <Col className="d-flex flex-column" span={16}>
                         
                             <span>{item.name}</span>                          
                               <span className="currency-label">

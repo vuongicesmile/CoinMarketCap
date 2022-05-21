@@ -1,5 +1,5 @@
 import './App.css';
-import { Button } from 'antd';
+import { Button,Row,Col } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import  euro from './Currency/assets/EUR.svg';
 import React, { useState, useEffect } from "react";
@@ -16,7 +16,7 @@ import rub from "./Currency/assets/IDR.svg";
 function App() {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [listCurrency, setlistCurrency] = useState([
+  const listCurrency =[
     {
       id: "vn-flag",
       flag: vnd,
@@ -65,7 +65,7 @@ function App() {
       isActive : false,
       value : "Riel"
     },
-  ]);
+  ];
 
   const [itemCurrency,setitemCurrency] = useState({
     id: "vn-flag",
@@ -84,14 +84,16 @@ function App() {
     <div className="App">
      <Button 
      type="dashed"
-     icon= {<CaretDownOutlined />}
      onClick={showModal}
      >
-       <span> {itemCurrency.value}</span>
-       <span><img src={itemCurrency.flag}></img></span>
+       <Row gutter={4}>
+       <Col><img src={itemCurrency.flag}></img></Col>
+       <Col> {itemCurrency.value}</Col>
+       <Col className="d-flex align-items-center"><CaretDownOutlined /></Col>
+       </Row>
       </Button>
 
-      <Currency onChange={setitemCurrency} readOnly={true} value={listCurrency} visible={isModalVisible} onClose={() => {setIsModalVisible(false)}} />
+      <Currency onChange={setitemCurrency} readOnly={false} value={listCurrency} visible={isModalVisible} onClose={() => {setIsModalVisible(false)}} />
     </div>
   );
 }
