@@ -88,8 +88,9 @@ function Currency({ onChange, readOnly, value }) {
   useEffect(()=>{
     handleSetItemCurrency(value)
   },[])
+
   const handleSetItemCurrency = (value) => {
-    listCurrency.filter((item) => {
+    listCurrency.map((item) => {
       if (item.value.includes(value)) {
         item.isActive = true;
         setitemCurrency(item);
