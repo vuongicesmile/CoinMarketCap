@@ -305,13 +305,12 @@ function Restaurant() {
         hien thi menu
       </Row>
       <div className="area-container">
-        <Col
-          offset={1}
+        <Row
           span={4}
-          className="header-container d-flex align-items-center"
+          className="header-container d-flex align-items-center p-5"
         >
           <button>add</button>
-        </Col>
+        </Row>
         <div className="location-container">
           <Row gutter={[0, 39]} className="p-4">
             {locationAddImage.map((items, index) => {
